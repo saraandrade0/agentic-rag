@@ -1,0 +1,29 @@
+# Core
+python-dotenv>=1.0
+fastapi>=0.100
+uvicorn>=0.23
+
+# LangGraph & LangChain
+langgraph>=0.2
+langchain>=0.2
+langchain-community>=0.2
+langchain-openai>=0.1
+langchain-core>=0.2
+
+# Embeddings & Vector Store
+chromadb>=0.4
+sentence-transformers>=2.2
+
+# Lexical Search
+rank-bm25>=0.2.2
+
+# LLM
+openai>=1.0
+
+# Document Processing
+pypdf>=3.15
+tiktoken>=0.5
+
+# Utils
+numpy>=1.24
+pydantic>=2.0
