@@ -98,7 +98,7 @@ def grade_documents(state: AgentState) -> Dict[str, Any]:
     for doc in documents:
         result = chain.invoke({
             "question": question,
-            "document": doc["content"],
+            "document": doc.get("content", ""),
         })
         try:
             parsed = json.loads(result)
@@ -137,7 +137,7 @@ def generate(state: AgentState) -> Dict[str, Any]:
     question = state["question"]
 
     context = "\n\n---\n\n".join(
-        f"[Source: {doc.get('metadata', {}).get('source', 'unknown')}]\n{doc['content']}"
+        f"[Source: {doc.get('metadata', {}).get('source', 'unknown')}]\n{doc.get('content', '')}"
         for doc in documents
     )
 
@@ -183,8 +183,7 @@ def check_hallucination(state: AgentState) -> Dict[str, Any]:
     documents = state["documents"]
     generation = state["generation"]
 
-    docs_text = "\n\n".join(doc["content"] for doc in documents)
-
+    docs_text = "\n\n".join(doc.get("content", "") for doc in documents)
     chain = HALLUCINATION_PROMPT | llm | StrOutputParser()
     result = chain.invoke({"documents": docs_text, "generation": generation})
 
