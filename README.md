@@ -20,7 +20,7 @@ Unlike a basic RAG pipeline that blindly retrieves and generates, this system us
    ┌──────────┐  ┌────────────┐
    │ Retrieve │  │  Direct    │
    │ (Hybrid) │  │  Answer    │
-   └─────┬────┘  └─────┬──────┘
+   └─────┬────┘  └──────┬─────┘
          │              │
          ▼              │
    ┌──────────┐         │
